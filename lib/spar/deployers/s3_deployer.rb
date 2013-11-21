@@ -10,7 +10,7 @@ class S3Deployer < Spar::Deployer
     unless @aws_key and @aws_secret and @deploy_bucket
       raise "ERROR: You should set :aws_key, :aws_secret, and :deploy_bucket in your config.yml file so you can deploy to S3"
     end
-    
+
     AWS.config(
       :access_key_id      => @aws_key,
       :secret_access_key  => @aws_secret,
@@ -21,7 +21,7 @@ class S3Deployer < Spar::Deployer
     unless @bucket.exists?
       @bucket = @s3.buckets.create(@deploy_bucket)
     end
-    @age_out = 60 * 60 * 24 * 3 # 3 days 
+    @age_out = 60 * 60 * 24 * 3 # 3 days
 
     super
 
@@ -53,11 +53,11 @@ class S3Deployer < Spar::Deployer
   end
 
   def upload(asset)
-    if asset.write_path =~ /\.html$/ && !(asset.write_path =~ /\/?index\.html$/)
-      @bucket.objects[asset.write_path.gsub(/\.html/, '/index.html')].write(asset.headers.merge(:data => asset.data))
-    else
+    #if asset.write_path =~ /\.html$/ && !(asset.write_path =~ /\/?index\.html$/)
+    #  @bucket.objects[asset.write_path.gsub(/\.html/, '/index.html')].write(asset.headers.merge(:data => asset.data))
+    #else
       @bucket.objects[asset.write_path].write(asset.headers.merge(:data => asset.data))
-    end
+    #end
   end
 
   def finish
