@@ -48,7 +48,7 @@ module Spar
       root = File.exist?("#{root_path}/config.yml") ? root_path : Dir.pwd
       raise "Could not find root path for #{self}" unless root
 
-      RbConfig::CONFIG['host_os'] =~ /mswin|mingw/ ? Pathname.new(root).expand_path : Pathname.new(root).realpath   
+      RbConfig::CONFIG['host_os'] =~ /mswin|mingw/ ? Pathname.new(root).expand_path : Pathname.new(root).realpath
     end
   end
 
@@ -125,6 +125,14 @@ module Spar
 
   def self.app
     app = Rack::Builder.new do
+      use Rack::Cors do
+        allow do
+          origins '*'
+            resource '*', headers: :any, methods: [ :get ]
+        end
+      end
+
+
       use Spar::Rewrite
       use Spar::Exceptions
 
@@ -139,7 +147,7 @@ module Spar
   end
 
   protected
-  
+
     def self.load_config
       pathname = Pathname.new(Spar.root).join("config.yml")
       begin

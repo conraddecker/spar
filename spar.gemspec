@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "aruba"
 
   s.add_dependency "rack",               '~> 1.4',  '>= 1.4.1'
+  s.add_dependency "rack-cors",          '~> 0.2',  '>= 0.2.9'
   s.add_dependency "sinatra",            '~> 1.3',  '>= 1.3.2'
   s.add_dependency "sass",               '~> 3.1',  '>= 3.1.10'
   s.add_dependency "haml",               '~> 3.1',  '>= 3.1.4'
