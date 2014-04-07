@@ -1,6 +1,6 @@
 # Introduction
 
-Spar is an opinionated framework that makes developing and deploying single-page web apps and static websites using modern front-end technology like SASS, Haml, and Coffeescript a cinch.
+Spar is an ![](//Screenshot%202014-04-05%2014.10.45.png) framework that makes developing and deploying single-page web apps and static websites using modern front-end technology like SASS, Haml, and Coffeescript a cinch.
 
 We created Spar to decouple front-end development and deployment from specific backend languages like ruby, python, or Java. 
 
